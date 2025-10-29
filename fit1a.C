@@ -6,9 +6,9 @@
 #include "TROOT.h"
 
 
-// fit1.C
+// fit1a.C
 // entries is the number of random samples filled into the histogram
-void fit1(int entries=1000, bool save=false) {
+void fit1a(int entries=1000, int ntrials=1000, bool save=false) {
    //Simple histogram fitting examples
   gROOT->Reset();  // useful to reset ROOT to a cleaner state
 
@@ -18,8 +18,13 @@ void fit1(int entries=1000, bool save=false) {
   TH1F *randomHist1 = new TH1F("randomHist1", "Random Histogram;x;frequency", 100, 0, 100);
   TRandom2 *generator=new TRandom2(0);  // parameter == seed, 0->use clock
 
-  for (int i=0 ; i<entries ; i++){
-    randomHist1->Fill(generator->Gaus(50,10)); // params: mean, sigma
+  for (int j=0 ; j<ntrials ; j++) {
+    randomHist1->Reset(); // reset histogram bin content to 0
+    for (int i=0 ; i<entries ; i++){
+      randomHist1->Fill(generator->Gaus(50,10)); // params: mean, sigma
+    }
+    randomHist1->Fit("gaus","");
+    // do more stuff
   }
   // simple fits may be performed automatically
   // gStyle->SetOptFit(111);  // show reduced chi2 and params
