@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "fit1.C": "cpp"
+        "fit1.C": "cpp",
+        "fit1 copy.C": "cpp",
+        "fit1a.C": "cpp"
     }
 }
