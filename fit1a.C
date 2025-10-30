@@ -22,6 +22,7 @@ void fit1a(int entries=1000, int ntrials=1000, bool save=false) {
   TRandom2 *generator=new TRandom2(0);  // parameter == seed, 0->use clock
 
   double storedChiSquare[1000]; // store reduced chi_square here.
+  double storedMean[1000]; // store mean values.
   double chi_square;
   double ndegrees_freedom;
   double reduced_chi_square;
@@ -34,6 +35,11 @@ void fit1a(int entries=1000, int ntrials=1000, bool save=false) {
     randomHist1->Fit("gaus");
     // create a pointer to the fit result, so we can do methods on it
     TF1 *fitfunc = randomHist1->GetFunction("gaus");
+    // fit_mean = fitfunc->Mean(); // gets mean value
+    fit_mean = fitfunc->GetParameter(1); //mean value
+    fit_normalization = fitfunc->GetParameter(0);
+    fit_sigma = fitfunc->GetParameter(2); // sigma
+
     chi_square = fitfunc->GetChisquare();
     ndegrees_freedom = fitfunc->GetNDF();
     reduced_chi_square = chi_square / ndegrees_freedom;
