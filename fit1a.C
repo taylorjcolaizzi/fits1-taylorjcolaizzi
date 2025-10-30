@@ -7,9 +7,12 @@
 
 
 // fit1a.C
-// entries is the number of random samples filled into the histogram
 void fit1a(int entries=1000, int ntrials=1000, bool save=false) {
-   //Simple histogram fitting examples
+  // Parameters:
+  // entries : number of random numbers in histogram
+  // ntrials : number of histograms used in calculation
+
+
   gROOT->Reset();  // useful to reset ROOT to a cleaner state
 
   TFile *tf=0;
@@ -28,8 +31,8 @@ void fit1a(int entries=1000, int ntrials=1000, bool save=false) {
     for (int i=0 ; i<entries ; i++){
       randomHist1->Fill(generator->Gaus(50,10)); // params: mean, sigma
     }
-    randomHist1->Fit("gaus","");
-    // create a pointer to the fit result, so we can do methods on it later
+    randomHist1->Fit("gaus");
+    // create a pointer to the fit result, so we can do methods on it
     TF1 *fitfunc = randomHist1->GetFunction("gaus");
     chi_square = fitfunc->GetChisquare();
     ndegrees_freedom = fitfunc->GetNDF();
@@ -37,11 +40,18 @@ void fit1a(int entries=1000, int ntrials=1000, bool save=false) {
 
     storedChiSquare[j] = reduced_chi_square;
   }
+
+  // now that we have the reduced_chi_square data, we can put it into another histogram.
+
+  TH1F *chi_squareHist1 = new TH1F("chi_squareHist1", "Reduced Chi-Square Histogram;Chi;Frequency", 100, 0, 2);
+  for (int i=0 ; i<1000 ; i++) {
+    chi_squareHist1->Fill(storedChiSquare[i]);
+  }
   // simple fits may be performed automatically
   // gStyle->SetOptFit(111);  // show reduced chi2 and params
   gStyle->SetOptFit(1111); // show reduced chi2, probability, and params
-  randomHist1->Fit("gaus");  
-  randomHist1->DrawCopy("e");  // "e" shows bin errors
+  chi_squareHist1->Fit("gaus");  
+  chi_squareHist1->DrawCopy("e");  // "e" shows bin errors
   // Using DrawCopy vs Draw allows us to delete the original histogram
   // without removing it from the display.  If we save the histogran to a
   // file and close the file, it will be deleted from memory.
@@ -53,12 +63,12 @@ void fit1a(int entries=1000, int ntrials=1000, bool save=false) {
   // Refer to http://root.cern.ch/root/html/TF1.html
   // for a complete list of TF1 methods
 
-  TF1 *fitfunc = randomHist1->GetFunction("gaus");
+  TF1 *fitchi = chi_squareHist1->GetFunction("gaus");
   cout << "\nFit Params and errors" << endl;
-  cout << fitfunc->GetParameter(0) << " +- " << fitfunc->GetParError(0) << endl;
-  cout << fitfunc->GetParameter(1) << " +- " << fitfunc->GetParError(1) << endl;
-  cout << fitfunc->GetParameter(2) << " +- " << fitfunc->GetParError(2) << endl;
-  cout << "Fit Probability: " << fitfunc->GetProb() << endl; // returns chi^2 p-value
+  cout << fitchi->GetParameter(0) << " +- " << fitchi->GetParError(0) << endl;
+  cout << fitchi->GetParameter(1) << " +- " << fitchi->GetParError(1) << endl;
+  cout << fitchi->GetParameter(2) << " +- " << fitchi->GetParError(2) << endl;
+  cout << "Fit Probability: " << fitchi->GetProb() << endl; // returns chi^2 p-value
 
   if (save) {
     tf->Write();
