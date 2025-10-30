@@ -35,7 +35,7 @@ void fit1a(int entries=1000, int ntrials=1000, bool save=false) {
     ndegrees_freedom = fitfunc->GetNDF();
     reduced_chi_square = chi_square / 
 
-    storedChiSquare[j] = reduced_chi_square;
+    storedChiSquare(j) = reduced_chi_square;
   }
   // simple fits may be performed automatically
   // gStyle->SetOptFit(111);  // show reduced chi2 and params
