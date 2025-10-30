@@ -26,6 +26,9 @@ void fit1a(int entries=1000, int ntrials=1000, bool save=false) {
   double chi_square;
   double ndegrees_freedom;
   double reduced_chi_square;
+  double fit_mean;
+  double fit_normalization;
+  double fit_sigma;
 
   for (int j=0 ; j<ntrials ; j++) {
     randomHist1->Reset(); // reset histogram bin content to 0
