@@ -31,11 +31,11 @@ void fit1a(int entries=1000, int ntrials=1000, bool save=false) {
     randomHist1->Fit("gaus","");
     // create a pointer to the fit result, so we can do methods on it later
     TF1 *fitfunc = randomHist1->GetFunction("gaus");
-    chi_square = fitfunc->GetChiSquare();
+    chi_square = fitfunc->GetChisquare();
     ndegrees_freedom = fitfunc->GetNDF();
-    reduced_chi_square = chi_square / 
+    reduced_chi_square = chi_square / ndegrees_freedom;
 
-    storedChiSquare(j) = reduced_chi_square;
+    storedChiSquare[j] = reduced_chi_square;
   }
   // simple fits may be performed automatically
   // gStyle->SetOptFit(111);  // show reduced chi2 and params
