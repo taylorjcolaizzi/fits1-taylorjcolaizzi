@@ -18,13 +18,17 @@ void fit1a(int entries=1000, int ntrials=1000, bool save=false) {
   TH1F *randomHist1 = new TH1F("randomHist1", "Random Histogram;x;frequency", 100, 0, 100);
   TRandom2 *generator=new TRandom2(0);  // parameter == seed, 0->use clock
 
+  
+
   for (int j=0 ; j<ntrials ; j++) {
     randomHist1->Reset(); // reset histogram bin content to 0
     for (int i=0 ; i<entries ; i++){
       randomHist1->Fill(generator->Gaus(50,10)); // params: mean, sigma
     }
     randomHist1->Fit("gaus","");
-    // do more stuff
+    double chi_square = randomHist1->GetChiSquare(); // returns chi-square after fitting
+    double ndegrees_freedom = randomHist1->GetNDF(); // returns number of DOF after fitting
+    double reduced_chi_square = chi_square / ndegrees_freedom; //
   }
   // simple fits may be performed automatically
   // gStyle->SetOptFit(111);  // show reduced chi2 and params
