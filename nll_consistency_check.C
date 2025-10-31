@@ -90,5 +90,20 @@ void nll_consistency_check() {
     line->SetLineWidth(2);
     line->Draw("same");
 
+    c1->Update();
+    c1->Draw();
+    c1->SaveAs("result3.pdf");
+
+    // Step 6: Estimate p-value
+    int countExtreme = 0;
+    for (double toyNLL : nllValues) {
+        if (toyNLL >= dataNLL) {
+            countExtreme++;
+        }
+    }
+
+    double pValue = static_cast<double>(countExtreme) / nllValues.size();
+    std::cout << "Estimated p-value: " << pValue << std::endl;
+
     std::cout << "Red line shows data NLL over toy distribution." << std::endl;
 }

@@ -31,6 +31,8 @@ Exercise 2: I wrote this one myself.
 * To view plot of uncertainties, please look at the file "exercise_2_extra.pdf".
 
 Exercise 3: I double checked my work with Tristen. I wrote this using Copilot.
-*
-*
-*
+* My code is in a file called nll_consistency_check.C. The estimated p-value is ~0.5; however, doing several runs yields values fluctuating between 0.44 and 0.47. Honestly, I had Copilot write this whole part of the exercise.
+
+Exercise PHYS 5630 Only: I also did this with Copilot
+* 
+* 
