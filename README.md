@@ -30,7 +30,7 @@ Exercise 2: I wrote this one myself.
 * We expect both methods to yield the same uncertainty in the fit parameters. However, we see that is not the case. The uncertainty in the mean should be nearly equal to the value of sigma. For the chi-square method, the mean uncertainty in the fit was 29 yet sigma was 10.4; for NLL, it was 2.9 and 3.16. We see clearly that the NLL method is superior because the uncertainty in the fit parameters is much closer to the standard deviation of the data.
 * To view plot of uncertainties, please look at the file "exercise_2_extra.pdf".
 
-Exercise 3: I also wrote this one with AI (Copilot).
+Exercise 3: I double checked my work with Tristen. I wrote this using Copilot.
 *
 *
 *
