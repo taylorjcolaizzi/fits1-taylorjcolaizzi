@@ -56,13 +56,15 @@ void fit1a(int entries=1000, int ntrials=1000, bool save=false) {
   // now that we have the reduced_chi_square data, we can put it into another histogram.
 
   TH1F *chi_squareHist1 = new TH1F("chi_squareHist1", "Reduced Chi-Square Histogram;Chi;Frequency", 100, 0, 2);
-  TH1F *meanHist1 = new TH1F("meanHist1", "Mean of Trials; Mean; Frequency", 100, 49, 51);
-  TH1F *error_meanHist1 = new TH1F("error_meanHist1", "Error of Mean of Trials; Error; Frequency", 100, 0.3, 0.35);
+  TH1F *meanHist1 = new TH1F("meanHist1", "Mean from Fits; Mean; Frequency", 100, 49, 51);
+  TH1F *error_meanHist1 = new TH1F("error_meanHist1", "Error of Mean from Fits; Error; Frequency", 100, 0.3, 0.35);
+  TH1F *chi_probHist1 = new TH1F("chi_probHist1", "Chi-Square Probability; Probability; Frequency", 100, 0, 1);
   
   for (int i=0 ; i<1000 ; i++) {
     chi_squareHist1->Fill(storedChiSquare[i]);
     meanHist1->Fill(fit_mean[i]);
     error_meanHist1->Fill(fit_mean_error[i]);
+    chi_probHist1->Fill(fit_probability[i]);
   }
 
   TScatter *scatter = new TScatter(1000, storedChiSquare, fit_probability);
@@ -77,7 +79,8 @@ void fit1a(int entries=1000, int ntrials=1000, bool save=false) {
   meanHist1->Draw();
 
   c1->cd(3);
-  scatter->Draw("scat");
+  // scatter->Draw("scat");
+  chi_probHist1->Draw();
 
   c1->cd(4);
   error_meanHist1->Draw();
