@@ -79,7 +79,7 @@ plt.xlabel("Mean")
 plt.ylabel("-2 ln L")
 plt.title("NLL Contour for histo25")
 plt.legend()
-plt.savefig("result4.pdf")
+plt.savefig("result4a.pdf")
 plt.close()
 
 mean_fit = model.GetParameter(1)
