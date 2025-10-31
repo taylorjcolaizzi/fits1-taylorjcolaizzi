@@ -34,5 +34,6 @@ Exercise 3: I double checked my work with Tristen. I wrote this using Copilot.
 * My code is in a file called nll_consistency_check.C. The estimated p-value is ~0.5; however, doing several runs yields values fluctuating between 0.44 and 0.47. Honestly, I had Copilot write this whole part of the exercise.
 
 Exercise PHYS 5630 Only: I also did this with Copilot
-* 
-* 
+* For NLL: Fitter-reported error on mean is 2.0878. NLL scan error on mean is 1.8978. 
+* For chi-square: Fitter-reported error on mean is 0.3326. Chi-square scan error on mean is 0.1955.
+* We see that the NLL and chi-square methods provide similar results to the fitter. This indicated they're likely consistent with each other, which is expected.
