@@ -18,3 +18,18 @@ You are welcome to modify the provided code for your projects and to use other p
 * TH1hist2Numpy.ipynb : an example for converting a ROOT histogram to numpy arrays
 
 Note that from ROOT you can type ```new TBrowser()``` or in Python r.TBrowser() to get a graphical browser that allows you to look at what's contained in the TFiles.
+
+Exercise 1:
+* Histograms are in the plot that "fit1a.C" creates, which is "result1.pdf".
+* The standard deviation of the Mean from Fits is 0.358, and the mean value of the Error of Mean from Fits is 0.3251. We expect these numbers to be similar because for a Normal distribution (Gaussian), the standard deviation of the mean values should be equal to the average value of the uncertainty in the means.
+* I did make a scatter plot of the chi-square probability as a function of the reduced chi-square, which is saved as "scatter_plot.pdf".
+
+Exercise 2:
+*
+*
+*
+
+Exercise 3:
+*
+*
+*

@@ -79,7 +79,6 @@ void fit1a(int entries=1000, int ntrials=1000, bool save=false) {
   meanHist1->Draw();
 
   c1->cd(3);
-  // scatter->Draw("scat");
   chi_probHist1->Draw();
 
   c1->cd(4);
@@ -87,6 +86,15 @@ void fit1a(int entries=1000, int ntrials=1000, bool save=false) {
 
   c1->Update();
   c1->Draw();
+
+  c1->SaveAs("result1.pdf");
+
+  TCanvas *c2 = new TCanvas("c2", "Scatterplot of Probability versus Reduced", 800, 600);
+  c2->cd(1);
+  scatter->SetTitle("Scatter plot;Reduced Chi-Square;Chi-Square Probability"); // Title with axis labels
+  scatter->Draw("ap");
+
+  c2->SaveAs("scatter_plot.pdf");
 
   if (save) {
     tf->Write();
