@@ -24,10 +24,9 @@ Exercise 1: I wrote this one myself.
 * The standard deviation of the Mean from Fits is 0.358, and the mean value of the Error of Mean from Fits is 0.3251. We expect these numbers to be similar because for a Normal distribution (Gaussian), the standard deviation of the mean values should be equal to the average value of the uncertainty in the means.
 * I did make a scatter plot of the chi-square probability as a function of the reduced chi-square, which is saved as "scatter_plot.pdf".
 
-Exercise 2: I wrote this with AI (Copilot).
-*
-*
-*
+Exercise 2: I wrote this one myself.
+* The results match expected values. After doing 1000 runs of 10 item histograms, we see that the mean values of each is about the same. However, since the chi-square method is not resistant to low statistics, it suffers from having very long non-zero tails. As such, its sigma is high. For the NLL method, we have a similar looking plot. However, there are tiny tails and the sigma is lower.
+* NEED TO COME BACK TO FIGURE OUT THE ESTIMATED UNCERTAINTY IN THE FIT PARAMETERS!!!
 
 Exercise 3: I also wrote this one with AI (Copilot).
 *
